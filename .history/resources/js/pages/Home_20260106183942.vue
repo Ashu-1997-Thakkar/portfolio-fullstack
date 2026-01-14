@@ -1,0 +1,323 @@
+<!-- ============================================ -->
+<!-- FILE: resources/js/pages/Home.vue -->
+<!-- ============================================ -->
+
+<template>
+  <div class="home-page">
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero-section">
+      <!-- Background Effects -->
+      <div class="bg-effects">
+        <span class="blob b1"></span>
+        <span class="blob b2"></span>
+        <span class="blob b3"></span>
+      </div>
+
+      <v-container>
+        <v-row class="min-vh-100 align-center">
+          <!-- LEFT CONTENT -->
+          <v-col cols="12" md="6">
+            <div class="hero-content">
+              <p class="intro">
+                <span class="wave">👋</span> Hi, my name is
+              </p>
+
+              <h1 class="hero-title">
+                <span class="name-first">Ashutosh</span><br />
+                <span class="name-last">Nandani</span>
+              </h1>
+
+              <h2 class="typing-line">
+                <span ref="typingText"></span>
+                <span class="cursor">|</span>
+              </h2>
+
+              <p class="hero-desc">
+                I’m a <strong>Laravel Full Stack Developer</strong> focused on
+                building clean, scalable and high-performance applications
+                using <strong>Laravel, Vue.js & MySQL</strong>.
+              </p>
+
+              <!-- CTA -->
+              <div class="cta-buttons">
+                <v-btn
+                  size="x-large"
+                  class="primary-btn"
+                  prepend-icon="mdi-rocket-launch"
+                  to="/projects"
+                >
+                  View My Work
+                </v-btn>
+
+               <v-btn
+  size="x-large"
+  variant="outlined"
+  class="secondary-btn"
+  prepend-icon="mdi-email-outline"
+  to="/contact"
+>
+  Hire Me
+</v-btn>
+
+              </div>
+
+              <!-- SOCIAL LINKS -->
+              <div class="socials">
+                <v-btn
+                  v-for="s in socialLinks"
+                  :key="s.name"
+                  :href="s.url"
+                  icon
+                  target="_blank"
+                >
+                  <v-icon>{{ s.icon }}</v-icon>
+                </v-btn>
+              </div>
+            </div>
+          </v-col>
+
+          <!-- RIGHT VISUAL -->
+          <v-col cols="12" md="6">
+            <div class="hero-visual">
+              <div class="tech-chip t1">Laravel</div>
+              <div class="tech-chip t2">Vue 3</div>
+              <div class="tech-chip t3">MySQL</div>
+              <div class="tech-chip t4">REST API</div>
+
+              <div class="avatar glass">
+                <v-icon size="160" color="primary">
+                  mdi-code-tags
+                </v-icon>
+              </div>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+    </section>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const typingText = ref(null)
+
+const socialLinks = [
+  { name: 'GitHub', icon: 'mdi-github', url: 'https://github.com/Ashu-1997-Thakkar' },
+  { name: 'LinkedIn', icon: 'mdi-linkedin', url: 'https://linkedin.com/in/ashutosh-nandani-a527b9156' },
+]
+
+onMounted(() => {
+  const roles = [
+    'Vue.js Frontend Engineer',
+    'Laravel Full Stack Developer',
+    'API & Database Specialist',
+  ]
+
+  let i = 0, j = 0, del = false
+
+  const type = () => {
+    const text = roles[i]
+    j = del ? j - 1 : j + 1
+    typingText.value.textContent = text.slice(0, j)
+
+    if (!del && j === text.length) setTimeout(() => del = true, 1200)
+    if (del && j === 0) { del = false; i = (i + 1) % roles.length }
+
+    setTimeout(type, del ? 60 : 90)
+  }
+
+  type()
+})
+</script>
+
+<style scoped>
+/* ================= HERO ================= */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f8fafc, #eef2ff);
+}
+
+.hero-content {
+  z-index: 2;
+}
+
+.intro {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+.hero-title {
+  margin-top: 6px;
+  line-height: 1.05;
+}
+
+.name-first {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 900;
+  color: #4f46e5;
+}
+
+.name-last {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.typing-line {
+  margin-top: 14px;
+  font-size: 1.4rem;
+  color: #4f46e5;
+  min-height: 40px;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.hero-desc {
+  max-width: 520px;
+  margin: 22px 0 34px;
+  color: #475569;
+  font-size: 1rem;
+}
+
+/* ================= CTA ================= */
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #fff;
+  border-radius: 14px;
+}
+
+.secondary-btn {
+  border: 2px solid #6366f1 !important;
+  color: #6366f1 !important;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  font-weight: 600;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: linear-gradient(135deg, #6366f1, #22d3ee) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+}
+
+/* ================= SOCIAL ================= */
+.socials {
+  margin-top: 28px;
+}
+
+.socials .v-btn:hover {
+  transform: translateY(-4px);
+}
+
+/* ================= VISUAL ================= */
+/* ================= VISUAL ================= */
+.hero-visual {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Center avatar */
+.avatar {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    circle at top,
+    rgba(99, 102, 241, 0.25),
+    rgba(255, 255, 255, 0.05)
+  );
+}
+
+/* Tech chips common */
+.tech-chip {
+  position: absolute;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  background: rgba(15, 23, 42, 0.9);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  animation: orbit 8s ease-in-out infinite;
+  backdrop-filter: blur(6px);
+}
+
+/* PERFECT CIRCULAR POSITIONS */
+.t1 {
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.t2 {
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+  animation-delay: -2s;
+}
+
+.t3 {
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: -4s;
+}
+
+.t4 {
+  left: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+  animation-delay: -6s;
+}
+
+/* Floating animation */
+@keyframes orbit {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -14px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 960px) {
+  .hero-visual {
+    height: 340px;
+    margin-top: 40px;
+  }
+  .cta-buttons {
+    flex-direction: column;
+  }
+}
+</style>
