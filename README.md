@@ -57,3 +57,38 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Laravel 12 + Vue JS + MySQL Fullstack Portfolio
+
+This is a fullstack portfolio project built using:
+
+- Laravel 12 (Backend API)
+- Vue.js + Vite (Frontend)
+- MySQL (Database)
+- Tailwind CSS (Styling)
+
+## Features
+- REST API with Laravel
+- Vue.js frontend
+- Authentication (Login / Register)
+- CRUD Operations
+- Responsive UI
+
+## Tech Stack
+- PHP 8+
+- Laravel 12
+- Vue 3
+- MySQL
+- Vite
+- Tailwind CSS
+
+## Setup Instructions
+
+### Backend (Laravel)
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+
