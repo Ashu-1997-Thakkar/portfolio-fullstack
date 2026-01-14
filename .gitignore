@@ -22,3 +22,16 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+# Laravel
+/vendor
+/.env
+
+# Vue
+/node_modules
+/dist
+
+# VS Code
+.history/
+
+# OS
+.DS_Store
