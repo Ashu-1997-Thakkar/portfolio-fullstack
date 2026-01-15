@@ -1,11 +1,10 @@
-import laravel from 'laravel-vite-plugin';
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite'
+import laravel from 'laravel-vite-plugin'
+import vue from '@vitejs/plugin-vue'
+
 export default defineConfig({
-    base: '/portfolio-fullstack/',
-    plugins: [vue()],
-})
-export default defineConfig({
+    base: "./", // ✅ Render / Static hosting fix
+
     server: {
         host: '127.0.0.1',
         port: 5173,
@@ -29,4 +28,4 @@ export default defineConfig({
             },
         }),
     ],
-});
+})
