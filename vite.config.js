@@ -1,7 +1,10 @@
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-
+export default defineConfig({
+    base: '/portfolio-fullstack/',
+    plugins: [vue()],
+})
 export default defineConfig({
     server: {
         host: '127.0.0.1',
